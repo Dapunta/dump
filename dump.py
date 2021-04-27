@@ -104,7 +104,7 @@ def friend():
 			print("\n[!] ID NOT found")
 			print("\n[ Back ]")
 			friend()
-		r=requests.get("https://graph.facebook.com/me/friends?limit="+limit+"&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/me?fields=friends.limit("+limit+")&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		jalan("\n[•] Getting ID ...\n")
@@ -143,7 +143,7 @@ def public():
 			print("\n[!] ID NOT found")
 			print("\n[ Back ]")
 			public()
-		r=requests.get("https://graph.facebook.com/"+idt+"/friends?limit="+limit+"&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/"+idt+"?fields=friends.limit("+limit+")&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		jalan("\n[•] Getting ID ...\n")
