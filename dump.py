@@ -14,12 +14,7 @@ def jalan(z):
 		time.sleep(0.03)
 
 def banner():
-    print("""
-   ___                
-  / _ \__ ____ _  ___ ® ┌──────────────────────────────┐
- / // / // /  ' \/ _ \  │  Script By Dapunta Khurayra  │
-/____/\_,_/_/_/_/ .__/  │   •• Github.com/Dapunta ••   │
-   ID Facebook /_/      └──────────────────────────────┘""")
+    print("""   ___                \n  / _ \__ ____ _  ___ ® ┌──────────────────────────────┐\n / // / // /  ' \/ _ \  │  Script By Dapunta Khurayra  │\n/____/\_,_/_/_/_/ .__/  │   •• Github.com/Dapunta ••   │\n   ID Facebook /_/      └──────────────────────────────┘""")
   
 def login():
     os.system('clear')
@@ -100,10 +95,9 @@ def friend():
 		os.system('rm -rf login.txt')
 		login()
 	try:
-		idt = raw_input("\n[•] ID Target        : ")
-                limit = raw_input("[•] Limit (Max 1000) : ")
+                limit = raw_input("\[•] Limit (Max 1000) : ")
 		try:
-			jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+			jok = requests.get("https://graph.facebook.com/me?access_token="+toket)
 			op = json.loads(jok.text)
 			print("[•] Name Account     : "+op["name"])
 		except KeyError:
