@@ -188,7 +188,7 @@ def followers():
 		jalan("\n[•] Getting ID ...\n")
 		qq = (op['first_name']+'.json').replace(" ","_")
 		ys = open(qq , 'w')
-		for a in z['friends']['data']:
+		for a in z['data']:
 			id.append(a['id']+"<=>"+a['name'])
 			ys.write(a['id']+"<=>"+a['name']+'\n')
 			print("\r%s "%(str(len(id)))),;sys.stdout.flush();time.sleep(0.005)
