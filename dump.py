@@ -95,7 +95,7 @@ def friend():
 		os.system('rm -rf login.txt')
 		login()
 	try:
-                limit = raw_input("\[•] Limit (Max 1000) : ")
+                limit = raw_input("\n[•] Limit (Max 1000) : ")
 		try:
 			jok = requests.get("https://graph.facebook.com/me?access_token="+toket)
 			op = json.loads(jok.text)
