@@ -68,27 +68,27 @@ def menu():
 	except Exception as e:
 	    	print ("\n[•] Error : %s"%e)
 	    	login()
-    print("\n[1] Dump ID From Friend")
-    print("[2] Dump ID From Public")
-    print("[3] Dump ID From Followers")
-    print("[0] Log Out")
-    r=raw_input("\n[•] Choose : ")
-    if r=="":
+    	print("\n[1] Dump ID From Friend")
+    	print("[2] Dump ID From Public")
+    	print("[3] Dump ID From Followers")
+    	print("[0] Log Out")
+    	r=raw_input("\n[•] Choose : ")
+    	if r=="":
 	    print("\n[!] Fill In The Correct")
 	    menu()
-    elif r=="1":
+    	elif r=="1":
 	    friend()
-    elif r=="2":
+    	elif r=="2":
 	    public()
-    elif r=="3":
+    	elif r=="3":
 	    followers()
-    elif r=="0":
-	try:
-		os.system('rm -rf login.txt')
-		exit()
-	except Exception as e:
-		print("\n[!] Error File Not Found %s"%e)
-    else:
+    	elif r=="0":
+		try:
+			os.system('rm -rf login.txt')
+			exit()
+		except Exception as e:
+			print("\n[!] Error File Not Found %s"%e)
+    	else:
 	    print ("\n[!] Wrong Input")
 	    menu()	
 
