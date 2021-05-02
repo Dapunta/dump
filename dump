@@ -1,11 +1,13 @@
 #!/usr/bin/python2
 #-*-coding:utf-8-*-
 
+import os,re,sys,itertools,time,requests,random,threading,json,random
 import requests,bs4,sys,os,subprocess,uuid
 import requests,sys,random,time,re,base64,json
 reload(sys)
 sys.setdefaultencoding("utf-8")
 from multiprocessing.pool import ThreadPool
+from requests.exceptions import ConnectionError
 
 def jalan(z):
 	for e in z + '\n':
