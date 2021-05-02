@@ -313,14 +313,6 @@ def target():
 			try:
 				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
 				op = json.loads(jok.text)
-				print("[•] Timezone         : "+op["timezone"])
-			except KeyError:
-				print("[•] Timezone         : -")
-			except IOError:
-				print("[•] Timezone         : -")
-			try:
-				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
-				op = json.loads(jok.text)
 				print("[•] Update Time      : "+op["updated_time"])
 			except KeyError:
 				print("[•] Update Time      : -")
