@@ -251,6 +251,8 @@ def target():
 				print("[•] Total Follower   : %s"%(len(id)))
 			except KeyError:
 				print("[•] Total Follower   : -")
+			jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+			op = json.loads(jok.text)
 			print("[•] Relationship     : "+op["relationship_status"])
 			print("[•] Religion         : "+op["religion"])
 			print("[•] About            : "+op["about"])
@@ -263,7 +265,6 @@ def target():
 			raw_input("[ Back ]")
 			menu()
 		except KeyError:
-			print("\n[!] ID Not Found")
 			raw_input("[ Back ]")
 			menu()
 	except Exception as e:
