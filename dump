@@ -222,18 +222,24 @@ def target():
 			op = json.loads(jok.text)
 			print("[•] Name Account     : "+op["name"])
 			print("[•] Username         : "+op["username"])
-			print("[•] Email            : "+op["email"])
-			print("[•] Date Of Birth    : "+op["birthday"])
-			print("[•] Gender           : "+op["gender"])
-			print("[•] Relationship     : "+op["relationship_status"])
-			print("[•] Religion         : "+op["religion"])
-			print("[•] About            : "+op["about"])
-			print("[•] Interested In    : "+op["interested_in"])
-			print("[•] Political        : "+op["political"])
-			print("[•] Quotes           : "+op["quotes"])
-			print("[•] Timezone         : "+op["timezone"])
-			print("[•] Update Time      : "+op["updated_time"])
-			print("[•] Website          : "+op["website"])
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Email            : "+op["email"])
+			except KeyError:
+				print("[•] Email            : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Date Of Birth    : "+op["birthday"])
+			except KeyError:
+				print("[•] Date Of Birth    : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Gender           : "+op["gender"])
+			except KeyError:
+				print("[•] Gender           : -")
 			try:
 				r = requests.get("https://graph.facebook.com/"+idt+"/friends?access_token="+toket)
 				id = []
@@ -260,6 +266,60 @@ def target():
 				print("[•] Total Follower   : %s"%(len(id)))
 			except KeyError:
 				print("[•] Total Follower   : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Relationship     : "+op["relationship_status"])
+			except KeyError:
+				print("[•] Relationship     : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Religion         : "+op["religion"])
+			except KeyError:
+				print("[•] Religion         : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] About            : "+op["about"])
+			except KeyError:
+				print("[•] About            : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Interested In    : "+op["interested_in"])
+			except KeyError:
+				print("[•] Interested In    : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Political        : "+op["political"])
+			except KeyError:
+				print("[•] Political        : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Quotes           : "+op["quotes"])
+			except KeyError:
+				print("[•] Quotes           : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Timezone         : "+op["timezone"])
+			except KeyError:
+				print("[•] Timezone         : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Update Time      : "+op["updated_time"])
+			except KeyError:
+				print("[•] Update Time      : -")
+			try:
+				jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+				op = json.loads(jok.text)
+				print("[•] Website          : "+op["website"])
+			except KeyError:
+				print("[•] Website          : -")
 			raw_input("\n[ Back ]")
 			menu()
 		except KeyError:
