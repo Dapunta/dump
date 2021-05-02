@@ -264,7 +264,7 @@ def target():
 			menu()
 		except KeyError:
 			print("\n[!] ID Not Found")
-			print("\n[ Back ]")
+			raw_input("[ Back ]")
 			menu()
 	except Exception as e:
 		exit("[•] Error : %s"%e)
