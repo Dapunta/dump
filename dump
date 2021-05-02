@@ -227,18 +227,28 @@ def target():
 			print("[•] Gender           : "+op["gender"])
 			try:
 				r = requests.get("https://graph.facebook.com/"+idt+"/friends?access_token="+toket)
+				id = []
 				z = json.loads(r.text)
+				qq = (op['first_name']+'.json').replace(" ","_")
+				ys = open(qq , 'w')
 				for i in z['data']:
 					id.append(i['id'])
-				print("[•] Total Friend     : "+str(len(id)))
+					ys.write(i['id'])
+				ys.close()
+				print("[•] Total Friend     : %s"%(len(id)))
 			except KeyError:
 				print("[•] Total Friend     : -")
 			try:
 				a=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=20000&access_token="+toket)
+				id = []
 				b = json.loads(a.text)
+				bb = (op['first_name']+'.json').replace(" ","_")
+				jw = open(bb , 'w')
 				for c in b['data']:
 					id.append(c['id'])
-				print("[•] Total Follower   : "+str(len(id)))
+					jw.write(c['id'])
+				jw.close()
+				print("[•] Total Follower   : %s"%(len(id)))
 			except KeyError:
 				print("[•] Total Follower   : -")
 			print("[•] Relationship     : "+op["relationship_status"])
