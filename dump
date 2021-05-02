@@ -66,6 +66,7 @@ def menu():
     	print("\n[1] Dump ID From Friend")
     	print("[2] Dump ID From Public")
     	print("[3] Dump ID From Followers")
+	print("[4] Get Data Target")
     	print("[0] Log Out")
     	r=raw_input("\n[•] Choose : ")
     	if r=="":
@@ -77,6 +78,8 @@ def menu():
 	    public()
     	elif r=="3":
 	    followers()
+	elif r=="4":
+	    target()
     	elif r=="0":
 		try:
 			os.system('rm -rf login.txt')
@@ -203,5 +206,56 @@ def followers():
 	except Exception as e:
 		exit("[•] Error : %s"%e)
 
+def target():
+	try:
+		toket=open('login.txt','r').read()
+	except IOError:
+		print("\n[!] Token Invalid")
+		os.system('rm -rf login.txt')
+		login()
+	try:
+		idt = raw_input("\n[•] ID Target        : ")
+		try:
+			jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
+			op = json.loads(jok.text)
+			print("[•] Name Account     : "+op["name"])
+			print("[•] Username         : "+op["username"])
+			print("[•] Email            : "+op["email"])
+			print("[•] Date Of Birth    : "+op["birthday"])
+			print("[•] Gender           : "+op["gender"])
+			try:
+				r = requests.get("https://graph.facebook.com/"+idt+"/friends?access_token="+toket)
+				z = json.loads(r.text)
+				for i in z['data']:
+					id.append(i['id'])
+				print("[•] Total Friend     : "+str(len(id)))
+			except KeyError:
+				print("[•] Total Friend     : -")
+			try:
+				a=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=20000&access_token="+toket)
+				b = json.loads(a.text)
+				for c in b['data']:
+					id.append(c['id'])
+				print("[•] Total Follower   : "+str(len(id)))
+			except KeyError:
+				print("[•] Total Follower   : -")
+			print("[•] Relationship     : "+op["relationship_status"])
+			print("[•] Religion         : "+op["religion"])
+			print("[•] About            : "+op["about"])
+			print("[•] Interested In    : "+op["interested_in"])
+			print("[•] Political        : "+op["political"])
+			print("[•] Quotes           : "+op["quotes"])
+			print("[•] Timezone         : "+op["timezone"])
+			print("[•] Update Time      : "+op["updated_time"])
+			print("[•] Website          : "+op["website"])
+			raw_input("[ Back ]")
+			menu()
+		except KeyError:
+			print("\n[!] ID Not Found")
+			print("\n[ Back ]")
+			menu()
+	except Exception as e:
+		exit("[•] Error : %s"%e)
+		
 if __name__=='__main__':
 	menu()
